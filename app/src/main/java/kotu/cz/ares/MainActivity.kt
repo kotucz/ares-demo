@@ -1,5 +1,6 @@
 package kotu.cz.ares
 
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.jakewharton.rxbinding2.widget.RxSearchView
@@ -17,8 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // TODO keep instance
-        subjectSearchViewModel = SubjectSearchViewModel()
+        subjectSearchViewModel = ViewModelProviders.of(this).get(SubjectSearchViewModel::class.java)
     }
 
     override fun onResume() {
