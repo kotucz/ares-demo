@@ -4,12 +4,15 @@ import android.arch.lifecycle.ViewModel
 import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jakewharton.rxrelay2.PublishRelay
 import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
+import io.reactivex.schedulers.Schedulers
 import kotu.cz.ares.model.AresSubject
-import kotu.cz.ares.rest.AresSubjectService
+import kotu.cz.ares.rest.AresSubjectModule
 
 class SubjectSearchViewModel : ViewModel() {
-    private val subjectService = AresSubjectService()
+    private val aresSubjectModule = AresSubjectModule()
+    private val subjectService = aresSubjectModule.aresSubjectService
 
     private val querySubmits = PublishRelay.create<String>()
     private val foundSubject = BehaviorRelay.create<AresSubject>()
@@ -17,6 +20,8 @@ class SubjectSearchViewModel : ViewModel() {
     init {
         querySubmits.switchMapSingle {
             subjectService.getSubject(it)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
         }.subscribe(foundSubject)
     }
 
