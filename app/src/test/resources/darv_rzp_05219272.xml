@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<are:Ares_odpovedi xmlns:are="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_rzp/v_1.0.5"
+    xmlns:D="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_datatypes/v_1.0.5"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" odpoved_datum_cas="2018-03-07T14:27:44" odpoved_pocet="1"
+    odpoved_typ="Vypis_RZP" vystup_format="XML" xslt="klient"
+    validation_XSLT="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_odpovedi.xsl"
+    xsi:schemaLocation="http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_rzp/v_1.0.5 http://wwwinfo.mfcr.cz/ares/xml_doc/schemas/ares/ares_answer_rzp/v_1.0.5/ares_answer_rzp_v_1.0.5.xsd"
+    Id="ares">
+    <are:Odpoved>
+        <D:PID>1</D:PID>
+        <D:VH>
+            <D:K>1</D:K>
+        </D:VH>
+        <D:PZA>1</D:PZA>
+        <D:UVOD>
+            <D:ND>Výpis z IS rzp</D:ND>
+            <D:ADB>2018-03-04</D:ADB>
+            <D:DVY>2018-03-07</D:DVY>
+            <D:CAS>14:27:45</D:CAS>
+            <D:TV>zakladni</D:TV>
+            <D:Typ_odkazu>0</D:Typ_odkazu>
+        </D:UVOD>
+        <D:Vypis_RZP>
+            <D:ZAU>
+                <D:S>A</D:S>
+                <D:Datum_zmeny>2016-07-04</D:Datum_zmeny>
+                <D:ICO>05219272</D:ICO>
+                <D:OF>Mgr. Tomáš Kotula</D:OF>
+                <D:PF>
+                    <D:KPF>101</D:KPF>
+                    <D:NPF>Fyzická osoba podnikající dle živnostenského zákona nezapsaná v obchodním rejstříku</D:NPF>
+                    <D:PFO>F</D:PFO>
+                    <D:T>fyzická osoba tuzemská</D:T>
+                </D:PF>
+                <D:ZU>
+                    <D:KZU>380604</D:KZU>
+                    <D:NZU>Městský úřad Kravaře</D:NZU>
+                </D:ZU>
+                <D:ZI1>2016-07-04</D:ZI1>
+                <D:Vsech_zivnosti>1</D:Vsech_zivnosti>
+                <D:Aktivnich_zivnosti>1</D:Aktivnich_zivnosti>
+            </D:ZAU>
+            <D:Adresy>
+                <D:A kvadres="2">
+                    <D:IDA>31275714</D:IDA>
+                    <D:N>Kravaře</D:N>
+                    <D:NCO>Kouty</D:NCO>
+                    <D:NU>Olšinky</D:NU>
+                    <D:CD>2025</D:CD>
+                    <D:TCD>1</D:TCD>
+                    <D:CO>14</D:CO>
+                    <D:CA>14a</D:CA>
+                    <D:PSC>74721</D:PSC>
+                </D:A>
+            </D:Adresy>
+            <D:Osoby>
+                <D:Osoba>
+                    <D:Role>P</D:Role>
+                    <D:J>Tomáš</D:J>
+                    <D:P>Kotula</D:P>
+                    <D:DN>1988-08-26</D:DN>
+                    <D:TP>Mgr.</D:TP>
+                </D:Osoba>
+            </D:Osoby>
+            <D:ZI>
+                <D:Z>
+                    <D:S>A</D:S>
+                    <D:Druh>L</D:Druh>
+                    <D:PP>
+                        Výroba, obchod a služby neuvedené v přílohách 1 až 3 živnostenského zákona
+                    </D:PP>
+                    <D:Obory_cinnosti>
+                        <D:Obor_cinnosti>
+                            <D:T>
+                                Zprostředkování obchodu a služeb
+                            </D:T>
+                        </D:Obor_cinnosti>
+                        <D:Obor_cinnosti>
+                            <D:T>
+                                Velkoobchod a maloobchod
+                            </D:T>
+                        </D:Obor_cinnosti>
+                        <D:Obor_cinnosti>
+                            <D:T>
+                                Poskytování software, poradenství v oblasti informačních technologií,
+                                zpracování dat, hostingové a související činnosti a webové portály
+                            </D:T>
+                        </D:Obor_cinnosti>
+                    </D:Obory_cinnosti>
+                    <D:Vznik>2016-07-04</D:Vznik>
+                </D:Z>
+            </D:ZI>
+        </D:Vypis_RZP>
+    </are:Odpoved>
+</are:Ares_odpovedi>
