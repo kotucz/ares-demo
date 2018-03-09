@@ -1,6 +1,7 @@
 package kotu.cz.ares.subjectsearch
 
-import android.arch.lifecycle.ViewModel
+import android.app.Application
+import android.arch.lifecycle.AndroidViewModel
 import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jakewharton.rxrelay2.PublishRelay
 import io.reactivex.Observable
@@ -10,8 +11,8 @@ import io.reactivex.schedulers.Schedulers
 import kotu.cz.ares.model.AresSubject
 import kotu.cz.ares.rest.AresSubjectModule
 
-class SubjectSearchViewModel : ViewModel() {
-    private val aresSubjectModule = AresSubjectModule()
+class SubjectSearchViewModel(application: Application) : AndroidViewModel(application) {
+    private val aresSubjectModule = AresSubjectModule(application)
     private val subjectService = aresSubjectModule.aresSubjectService
 
     private val querySubmits = PublishRelay.create<String>()
