@@ -8,8 +8,11 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
+import kotu.cz.ares.model.Address
 import kotu.cz.ares.model.AresSubject
 import kotu.cz.ares.rest.AresSubjectModule
+import org.simpleframework.xml.core.PersistenceException
+import java.io.IOException
 
 class SubjectSearchViewModel(application: Application) : AndroidViewModel(application) {
     private val aresSubjectModule = AresSubjectModule(application)
@@ -23,6 +26,17 @@ class SubjectSearchViewModel(application: Application) : AndroidViewModel(applic
             subjectService.getSubject(it)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .onErrorReturn { error ->
+                    val message = when {
+                        error is IOException -> "Chyba přípojení"
+                        error.cause is PersistenceException -> "Nelze načíst subjekt"
+                        else -> "Neznámá chyba"
+                    }
+                    AresSubject(
+                        message,
+                        Address("", "", "", "")
+                    )
+                }
         }.subscribe(foundSubject)
     }
 
