@@ -26,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         subjectSearchViewModel.let { vm ->
             subscriptions = CompositeDisposable(
                 vm.subjectNames().subscribe(subjectName::setText),
+                vm.subjectAddress1().subscribe(subjectAddress1::setText),
+                vm.subjectAddress2().subscribe(subjectAddress2::setText),
                 RxSearchView.queryTextChangeEvents(searchView)
                     .filter { it.isSubmitted }
                     .map { it.queryText().toString() }

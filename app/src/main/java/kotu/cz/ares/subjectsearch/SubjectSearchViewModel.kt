@@ -29,4 +29,10 @@ class SubjectSearchViewModel : ViewModel() {
 
     fun subjectNames(): Observable<String> = foundSubject
         .map { it.name }
+
+    fun subjectAddress1(): Observable<String> = foundSubject
+        .map { "${it.address.street} ${it.address.streetNumber}" }
+
+    fun subjectAddress2(): Observable<String> = foundSubject
+        .map { "${it.address.postCode} ${it.address.city}" }
 }

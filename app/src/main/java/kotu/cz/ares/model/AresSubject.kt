@@ -20,7 +20,19 @@ data class AresSubject(
 )
 
 data class Address(
+    @Element(name = "NU")
+    @field:Element(name = "NU")
+    val street: String,
+
+    @Element(name = "CO")
+    @field:Element(name = "CO")
+    val streetNumber: String,
+
     @Element(name = "N")
     @field:Element(name = "N")
-    val city: String
+    val city: String,
+
+    @Element(name = "PSC")
+    @field:Element(name = "PSC")
+    val postCode: String
 )
