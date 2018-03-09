@@ -5,6 +5,7 @@ import android.arch.lifecycle.AndroidViewModel
 import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jakewharton.rxrelay2.PublishRelay
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
@@ -22,21 +23,20 @@ class SubjectSearchViewModel(application: Application) : AndroidViewModel(applic
     private val foundSubject = BehaviorRelay.create<AresSubject>()
 
     init {
-        querySubmits.switchMapSingle {
-            subjectService.getSubject(it)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .onErrorReturn { error ->
-                    val message = when {
-                        error is IOException -> "Chyba přípojení"
-                        error.cause is PersistenceException -> "Nelze načíst subjekt"
-                        else -> "Neznámá chyba"
-                    }
-                    AresSubject(
-                        message,
-                        Address("", "", "", "")
-                    )
-                }
+        querySubmits.switchMap {
+            Single.just(messageSubject("Načítání..."))
+                .concatWith(
+                    subjectService.getSubject(it)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .onErrorReturn { error ->
+                            val message = when {
+                                error is IOException -> "Chyba přípojení"
+                                error.cause is PersistenceException -> "Nelze načíst subjekt"
+                                else -> "Neznámá chyba"
+                            }
+                            messageSubject(message)
+                        }).toObservable()
         }.subscribe(foundSubject)
     }
 
@@ -50,4 +50,11 @@ class SubjectSearchViewModel(application: Application) : AndroidViewModel(applic
 
     fun subjectAddress2(): Observable<String> = foundSubject
         .map { "${it.address.postCode} ${it.address.city}" }
+
+    private fun messageSubject(message: String): AresSubject {
+        return AresSubject(
+            message,
+            Address("", "", "", "")
+        )
+    }
 }
